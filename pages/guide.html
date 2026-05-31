@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小白部署教程 - 魅力工具箱</title>
+  <meta name="description" content="魅力工具箱零基础部署教程，10分钟免费上线网站。Cloudflare Pages + 免费域名。">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📖</text></svg>">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="../" class="logo"><span class="logo-icon">✨</span> 魅力工具箱</a>
+    <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="../">首页</a>
+      <a href="../#hot">🔥 热门</a>
+      <a href="../#categories">工具大全</a>
+      <a href="money.html">💎 赚钱</a>
+      <a href="guide.html" class="active">📖 教程</a>
+      <a href="blog.html">📝 博客</a>
+      <a href="links.html">🔗 友链</a>
+    </div>
+  </div>
+</nav>
+
+<div class="guide-section">
+  <h1 style="text-align:center;font-size:32px;margin-bottom:8px;">📖 小白部署教程</h1>
+  <p style="text-align:center;color:var(--text-light);margin-bottom:32px;">零基础 · 10分钟上线 · 完全免费</p>
+
+  <div class="guide-step">
+    <h3><span class="step-num">1</span> 注册 GitHub 账号</h3>
+    <p>访问 <a href="https://github.com" target="_blank">github.com</a> 注册一个免费账号，这是存放我们网站代码的地方。</p>
+    <p>💡 使用邮箱注册，验证邮箱即可。用户名建议用英文，如 <code>charm-tools</code></p>
+  </div>
+
+  <div class="guide-step">
+    <h3><span class="step-num">2</span> 下载/复制代码</h3>
+    <p>把整个 <code>charm-toolbox</code> 文件夹下载到你的电脑上，或者直接使用下面命令：</p>
+    <pre># 克隆仓库到本地（如果你会用Git的话）
+git clone https://github.com/你的用户名/charm-toolbox.git
+
+# 或者直接下载ZIP压缩包
+# 然后解压到电脑上</pre>
+    <p>📁 关键文件说明：</p>
+    <pre>charm-toolbox/
+├── index.html          # 主页（最重要的文件）
+├── css/
+│   └── style.css       # 样式文件
+├── js/
+│   └── data.js         # 工具数据（可以自己修改）
+├── pages/
+│   ├── guide.html      # 本教程页面
+│   ├── money.html      # 赚钱攻略
+│   ├── blog.html       # 博客
+│   └── links.html      # 友情链接
+└── images/             # 放图片的文件夹</pre>
+  </div>
+
+  <div class="guide-step">
+    <h3><span class="step-num">3</span> 创建 GitHub 仓库</h3>
+    <p>登录 GitHub 后：</p>
+    <ol style="margin-left:20px;color:var(--text-light);">
+      <li>点击右上角 <code>+</code> 号 → <code>New repository</code></li>
+      <li>仓库名输入 <code>charm-toolbox</code></li>
+      <li>选择 <code>Public</code>（公开）</li>
+      <li>点击 <code>Create repository</code></li>
+    </ol>
+  </div>
+
+  <div class="guide-step">
+    <h3><span class="step-num">4</span> 上传代码到 GitHub</h3>
+    <p><strong>方法一（推荐小白）：</strong> 直接在 GitHub 网页上传</p>
+    <ol style="margin-left:20px;color:var(--text-light);">
+      <li>在新创建的仓库页面，点击 <code>Add file</code> → <code>Upload files</code></li>
+      <li>把电脑上解压后的所有文件和文件夹拖进去</li>
+      <li>滚动到底部，点击 <code>Commit changes</code></li>
+    </ol>
+    <p style="margin-top:8px;"><strong>方法二（命令行）：</strong></p>
+    <pre>cd charm-toolbox
+git init
+git add .
+git commit -m "🎉 初始化魅力工具箱"
+git branch -M main
+git remote add origin https://github.com/你的用户名/charm-toolbox.git
+git push -u origin main</pre>
+  </div>
+
+  <div class="guide-step">
+    <h3><span class="step-num">5</span> 注册 Cloudflare 并部署</h3>
+    <p>访问 <a href="https://dash.cloudflare.com/" target="_blank">dash.cloudflare.com</a> 注册免费账号。</p>
+    <ol style="margin-left:20px;color:var(--text-light);">
+      <li>登录后，左侧菜单点击 <strong>Workers & Pages</strong></li>
+      <li>点击 <strong>Pages</strong> → <strong>Connect to Git</strong></li>
+      <li>授权 GitHub，选择 <code>charm-toolbox</code> 仓库</li>
+      <li><strong>Framework preset</strong> 选择 <code>None</code></li>
+      <li><strong>Build command</strong> 留空</li>
+      <li><strong>Build output directory</strong> 输入 <code>/</code></li>
+      <li>点击 <strong>Deploy</strong>，等待约1分钟</li>
+    </ol>
+    <p>🎉 部署完成！你会得到一个 <code>https://xxxx.pages.dev</code> 的网址，直接访问即可！</p>
+  </div>
+
+  <div class="guide-step">
+    <h3><span class="step-num">6</span> 绑定自定义域名（可选）</h3>
+    <ol style="margin-left:20px;color:var(--text-light);">
+      <li>在 Cloudflare Pages 项目页 → <strong>Custom domains</strong> → <strong>Set up a custom domain</strong></li>
+      <li>输入你的域名（如 <code>charm-toolbox.com</code>）</li>
+      <li>推荐在 <a href="https://www.namecheap.com/" target="_blank">Namecheap</a> 或 <a href="https://www.dynadot.com/" target="_blank">Dynadot</a> 购买域名，首年约¥20-50</li>
+      <li>也可以使用 <strong>免费域名</strong>：<a href="https://nic.ua/" target="_blank">nic.ua</a>（免费的 .pp.ua 域名）</li>
+    </ol>
+  </div>
+
+  <div class="guide-step">
+    <h3><span class="step-num">7</span> 开启 HTTPS</h3>
+    <p>Cloudflare 自动提供免费的 SSL 证书！无需手动配置，部署后自动开启 HTTPS，你的网站就是 <code>https://</code> 安全连接。</p>
+  </div>
+
+  <div class="guide-step">
+    <h3><span class="step-num">8</span> 自定义修改网站</h3>
+    <p>想修改网站内容？超简单：</p>
+    <ul style="margin-left:20px;color:var(--text-light);">
+      <li><strong>修改工具名称/描述</strong> → 编辑 <code>js/data.js</code> 文件</li>
+      <li><strong>修改网站标题/颜色</strong> → 编辑 <code>css/style.css</code> 文件的 <code>:root</code> 变量</li>
+      <li><strong>修改页面文字</strong> → 编辑对应的 <code>.html</code> 文件</li>
+      <li><strong>添加图片</strong> → 放到 <code>images/</code> 文件夹</li>
+      <li><strong>修改友情链接</strong> → 编辑 <code>pages/links.html</code></li>
+    </ul>
+    <p>改完后，在 GitHub 仓库上传新文件，Cloudflare 会自动重新部署（约1-2分钟生效）！</p>
+  </div>
+
+  <div class="guide-step">
+    <h3><span class="step-num">9</span> 接入统计工具</h3>
+    <p>了解有多少人访问你的网站：</p>
+    <ul style="margin-left:20px;color:var(--text-light);">
+      <li><strong>51la</strong> (免费，国内速度快) → <a href="https://www.51.la/" target="_blank">51.la</a></li>
+      <li><strong>Google Analytics</strong> (国际标准) → <a href="https://analytics.google.com/" target="_blank">analytics.google.com</a></li>
+      <li><strong>Umami</strong> (开源轻量) → <a href="https://umami.is/" target="_blank">umami.is</a></li>
+    </ul>
+    <p>在 <code>index.html</code> 底部找到统计代码，替换成你的即可。</p>
+  </div>
+
+  <div class="guide-step">
+    <h3><span class="step-num">10</span> 接入广告赚钱</h3>
+    <p>当网站有一定流量后（日均>100UV）：</p>
+    <ul style="margin-left:20px;color:var(--text-light);">
+      <li><strong>Google AdSense</strong> → 申请审核，通过后添加广告代码</li>
+      <li><strong>联盟营销</strong> → 在工具结果页嵌入商品推荐链接</li>
+      <li><strong>AI会员</strong> → 接入支付接口（推荐 <a href="https://stripe.com/" target="_blank">Stripe</a> 或 <a href="https://www.payjs.cn/" target="_blank">PayJS</a>）</li>
+    </ul>
+    <p>详细策略请看 <a href="money.html">💎 赚钱攻略</a></p>
+  </div>
+
+  <div style="text-align:center;margin-top:40px;padding:32px;background:linear-gradient(135deg,#fff5f7,#f3e5f5);border-radius:var(--radius);">
+    <div style="font-size:48px;margin-bottom:12px;">🎉</div>
+    <h3>恭喜！你的魅力工具箱上线了！</h3>
+    <p style="color:var(--text-light);margin-top:8px;">从今天起，你拥有了一个专为女性打造的百款工具平台 💕</p>
+    <div style="margin-top:16px;">
+      <a href="../" class="friend-link-item">🏠 返回首页</a>
+      <a href="money.html" class="friend-link-item">💎 看赚钱攻略</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div><h3>✨ 魅力工具箱</h3><p style="font-size:13px;color:#b2bec3;">专为女性打造的100款在线工具平台</p></div>
+    <div><h3>快速链接</h3><a href="../">首页</a><a href="money.html">赚钱攻略</a><a href="blog.html">博客</a></div>
+  </div>
+  <div class="footer-bottom">© 2026 魅力工具箱</div>
+</footer>
+</body>
+</html>

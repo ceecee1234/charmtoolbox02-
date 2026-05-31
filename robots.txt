@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://charm-toolbox.pages.dev/sitemap.xml

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔥 免费女性工具TOP20 - 魅力工具箱</title>
+  <meta name="description" content="2026年最火的20款免费女性在线工具！AI颜值评分、AI穿搭推荐、MBTI测试、塔罗占卜、经期记录…全部免费！">
+  <meta property="og:title" content="🔥 免费女性工具TOP20">
+  <meta property="og:description" content="AI颜值评分、AI穿搭推荐、MBTI测试、富婆指数…20款爆火免费工具！">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="/" class="logo"><span class="logo-icon">✨</span> 魅力工具箱</a>
+    <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="/">首页</a>
+      <a href="/pages/money.html">💎 赚钱</a>
+      <a href="/pages/guide.html">📖 教程</a>
+      <a href="/pages/blog.html">📝 博客</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" style="padding:40px 24px;">
+  <div class="hero-content">
+    <div style="font-size:48px;margin-bottom:8px;">🔥</div>
+    <h1 style="font-size:32px;">2026年爆火女性工具TOP20</h1>
+    <p>全部免费 · 即开即用 · 适合分享给闺蜜</p>
+  </div>
+</section>
+
+<div class="section">
+  <div class="tool-grid hot-grid" id="viralGrid"></div>
+</div>
+
+<div style="max-width:600px;margin:0 auto 40px;padding:24px;background:linear-gradient(135deg,#fff5f7,#f3e5f5);border-radius:var(--radius);text-align:center;">
+  <h3 style="font-size:18px;margin-bottom:8px;">💕 分享给闺蜜</h3>
+  <p style="font-size:14px;color:var(--text-light);margin-bottom:16px;">一键复制推荐语，发到朋友圈/小红书/微信群</p>
+  <div style="background:white;border-radius:8px;padding:16px;font-size:13px;color:var(--text-light);text-align:left;margin-bottom:12px;">
+    🔥 发现一个超好用的女性工具站！AI测颜值、AI穿搭推荐、MBTI测试、塔罗占卜…100款工具全部免费！<br>
+    👉 https://charm-toolbox.pages.dev
+  </div>
+  <button onclick="navigator.clipboard.writeText('🔥 发现一个超好用的女性工具站！AI测颜值、AI穿搭推荐、MBTI测试、塔罗占卜…100款工具全部免费！\n👉 https://charm-toolbox.pages.dev').then(()=>{this.textContent='✅ 已复制！';setTimeout(()=>{this.textContent='📋 复制分享文案'},2000)})" style="padding:10px 24px;background:var(--primary);color:white;border:none;border-radius:8px;cursor:pointer;font-size:14px;">
+    📋 复制分享文案
+  </button>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div><h3>✨ 魅力工具箱</h3><p style="font-size:13px;color:#b2bec3;">专为女性打造的100款在线工具</p></div>
+    <div><h3>链接</h3><a href="/">首页</a><a href="/pages/money.html">赚钱攻略</a><a href="/pages/guide.html">部署教程</a></div>
+  </div>
+  <div class="footer-bottom">© 2026 魅力工具箱</div>
+</footer>
+
+<script src="js/data.js"></script>
+<script>
+function renderViralTools() {
+  const all = getAllTools();
+  const hotIds = TOOLS_DATA.hotTools;
+  const items = hotIds.map(id => all.find(t => t.id === id)).filter(Boolean);
+  
+  const grid = document.getElementById('viralGrid');
+  grid.innerHTML = items.map((t, i) => `
+    <a href="javascript:void(0)" class="tool-card" onclick="showTool(${t.id})" style="${i < 3 ? 'border:2px solid #ff6b6b;' : ''}">
+      <span class="hot-tag">#${i+1}</span>
+      ${i < 3 ? '<span class="new-tag">🔥 TOP3</span>' : ''}
+      <div class="icon">${t.icon}</div>
+      <div class="name">${t.name}</div>
+      <div class="desc">${t.desc}</div>
+    </a>
+  `).join('');
+}
+
+function showTool(id) {
+  const all = getAllTools();
+  const tool = all.find(t => t.id === id);
+  if (!tool) return;
+  
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay open';
+  modal.onclick = function(e) { if (e.target === this) document.body.removeChild(modal); };
+  modal.innerHTML = `
+    <div class="modal-content">
+      <button class="modal-close" onclick="document.body.removeChild(this.closest('.modal-overlay'))">✕</button>
+      <div class="icon-big">${tool.icon}</div>
+      <h2>${tool.name} 🔥</h2>
+      <p>📂 ${tool.category} · ${tool.desc}</p>
+      <ul class="features">
+        ${tool.features.map(f => '<li>'+f+'</li>').join('')}
+      </ul>
+      <button class="btn-primary" onclick="document.body.removeChild(this.closest('.modal-overlay'))">✨ 马上去用！</button>
+    </div>
+  `;
+  document.body.appendChild(modal);
+  document.body.style.overflow = 'hidden';
+  
+  modal.querySelector('.modal-close').addEventListener('click', function() {
+    document.body.removeChild(modal);
+    document.body.style.overflow = '';
+  });
+}
+
+document.addEventListener('DOMContentLoaded', renderViralTools);
+</script>
+</body>
+</html>
